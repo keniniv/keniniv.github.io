@@ -1,0 +1,205 @@
+/* Importación de la tipografía Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg-color: #0b0a0a; /* Fondo oscuro y profundo */
+    --card-bg: rgba(22, 21, 21, 0.75); /* Tarjeta con efecto translúcido de vidrio */
+    --text-primary: #f3f3f3;
+    --text-secondary: #999999;
+    --brand-wine: #781f2b; /* Color concho vino principal */
+    --brand-wine-glow: rgba(120, 31, 43, 0.5);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --radius: 18px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    position: relative;
+    overflow: hidden; /* Oculta los círculos cuando salen de la pantalla */
+}
+
+/* ==========================================
+   FONDO CON CÍRCULOS ANIMADOS EN MOVIMIENTO
+   ========================================== */
+.background-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.5;
+    animation: floatCircles 15s infinite alternate ease-in-out;
+}
+
+/* Círculo 1 (Grande, color concho vino) */
+.circle-1 {
+    width: 450px;
+    height: 450px;
+    background-color: var(--brand-wine);
+    top: -10%;
+    left: -10%;
+    animation-duration: 18s;
+}
+
+/* Círculo 2 (Mediano, tono vino más claro/brillante) */
+.circle-2 {
+    width: 350px;
+    height: 350px;
+    background-color: #9c2838;
+    bottom: -15%;
+    right: -10%;
+    animation-duration: 22s;
+    animation-delay: -5s;
+}
+
+/* Círculo 3 (Pequeño de acento para mayor dinamismo) */
+.circle-3 {
+    width: 250px;
+    height: 250px;
+    background-color: #4a1219;
+    top: 40%;
+    left: 60%;
+    animation-duration: 14s;
+    animation-delay: -2s;
+}
+
+/* Animación de movimiento fluido */
+@keyframes floatCircles {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(60px, 80px) scale(1.1);
+    }
+    100% {
+        transform: translate(-50px, -70px) scale(0.9);
+    }
+}
+
+/* ==========================================
+   CONTENEDOR PRINCIPAL TIPO LINK TREE
+   ========================================== */
+.main-content {
+    width: 100%;
+    max-width: 440px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 28px;
+    padding: 48px 36px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(16px); /* Efecto vidrio esmerilado */
+    -webkit-backdrop-filter: blur(16px);
+}
+
+/* Cabecera / Título */
+.tittle {
+    margin-bottom: 36px;
+    width: 100%;
+}
+
+.tittle h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #ffffff 30%, #e0a8b0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tittle p {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+/* Navegación */
+nav {
+    width: 100%;
+}
+
+nav ul {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.itemlist {
+    width: 100%;
+}
+
+/* Botones con interacción elegante */
+.itemlist a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 16px 24px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Indicador de flecha interactivo */
+.itemlist a::after {
+    content: '→';
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto Hover dinámico */
+.itemlist a:hover {
+    background-color: var(--brand-wine);
+    border-color: #9c2838;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px var(--brand-wine-glow);
+    color: #ffffff;
+}
+
+.itemlist a:hover::after {
+    transform: translateX(5px);
+    color: #ffffff;
+}
+
+.itemlist a:active {
+    transform: translateY(-1px);
+}
